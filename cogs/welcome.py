@@ -33,7 +33,7 @@ class welcome(commands.Cog):
         with open("data/welcome.json", "r") as file:  # 用read模式開啟檔案
             data = json.load(file)  # 抓取檔案資料
         if str(member.guild.id) in data:  # 判斷該群組是否有資料
-            channel = self.bot.get_channel(data[str(member.guild.id)]) # 由資料裡的ID找到頻道
+            channel = self.bot.get_channel(data[str(member.guild.id)])
             await channel.send(f"{member.mention} 歡迎加入")
 
     @commands.Cog.listener()
@@ -41,7 +41,7 @@ class welcome(commands.Cog):
         with open("data/leave.json", "r") as file:  # 用read模式開啟檔案
             data = json.load(file)  # 抓取檔案資料
         if str(member.guild.id) in data:  # 判斷該群組是否有資料
-            channel = self.bot.get_channel(data[str(member.guild.id)]) # 由資料裡的ID找到頻道
+            channel = self.bot.get_channel(data[str(member.guild.id)])
             await channel.send(f"{member.mention} 離開了")
 
 
