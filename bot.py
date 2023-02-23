@@ -1,10 +1,11 @@
 import discord
 import os
 from discord.ext import commands
+from discord.commands import Option
 
 import json
 
-bot = commands.Bot(command_prefix="$", intents=discord.Intents.all())
+bot = commands.Bot(command_prefix="$", intents=discord.Intents.all()) # 定義什麼是bot
 
 for file in os.listdir('./cogs'):  # 抓取所有cog資料夾裡的檔案
     if file.endswith('.py'):  # 判斷檔案是否是python檔
@@ -15,7 +16,6 @@ for file in os.listdir('./cogs'):  # 抓取所有cog資料夾裡的檔案
         except Exception as error:  # 如果cog未正確載入
             print(f'❎   {file} 發生錯誤  {error}')
 
-with open("config.json", "r") as file:
-    data = json.load(file)
-TOKEN = data["token"]
-bot.run(TOKEN)
+with open("config.json", "r") as file: # 使用閱讀模式開啟資料檔案
+    data = json.load(file) # 讀取資料檔的內容
+bot.run(data["token"]) # 這是啟動機器人的部分哪
